@@ -41,30 +41,30 @@ int main() {
     int p = 23;  // A large prime number
     int g = 5;   // A primitive root modulo p
     
-    // Private keys (chosen secretly by Eve and David)
-    int evePrivateKey, davidPrivateKey;
-    printf("Enter Eve's private key: ");
-    scanf("%d", &evePrivateKey);
-    printf("Enter David's private key: ");
-    scanf("%d", &davidPrivateKey);
+    // Private keys (chosen secretly by Jack and Rose)
+    int jackPrivateKey, rosePrivateKey;
+    printf("Enter Jack's private key: ");
+    scanf("%d", &jackPrivateKey);
+    printf("Enter Rose's private key: ");
+    scanf("%d", &rosePrivateKey);
     
     // Public keys (computed from private keys)
-    int evePublicKey = modExp(g, evePrivateKey, p);  // Eve's public key
-    int davidPublicKey = modExp(g, davidPrivateKey, p);  // David's public key
+    int jackPublicKey = modExp(g, jackPrivateKey, p);  // Jack's public key
+    int rosePublicKey = modExp(g, rosePrivateKey, p);  // Rose's public key
     
-    printf("Eve's Public Key: %d\n", evePublicKey);
-    printf("David's Public Key: %d\n", davidPublicKey);
+    printf("Jack's Public Key: %d\n", jackPublicKey);
+    printf("Rose's Public Key: %d\n", rosePublicKey);
     
     // Shared secret keys (computed from the other's public key and own private key)
-    int sharedKeyEve = modExp(davidPublicKey, evePrivateKey, p);  // Eve computes the shared secret key
-    int sharedKeyDavid = modExp(evePublicKey, davidPrivateKey, p);  // David computes the shared secret key
+    int sharedKeyJack = modExp(rosePublicKey, jackPrivateKey, p);  // Jack computes the shared secret key
+    int sharedKeyRose = modExp(jackPublicKey, rosePrivateKey, p);  // Rose computes the shared secret key
     
-    printf("Shared Secret Key (Eve): %d\n", sharedKeyEve);
-    printf("Shared Secret Key (David): %d\n", sharedKeyDavid);
+    printf("Shared Secret Key (Jack): %d\n", sharedKeyJack);
+    printf("Shared Secret Key (Rose): %d\n", sharedKeyRose);
     
     // The shared keys should be the same
-    if (sharedKeyEve == sharedKeyDavid) {
-        printf("Key Exchange Successful! Shared Secret Key: %d\n", sharedKeyEve);
+    if (sharedKeyJack == sharedKeyRose) {
+        printf("Key Exchange Successful! Shared Secret Key: %d\n", sharedKeyJack);
     } else {
         printf("Key Exchange Failed!\n");
     }
@@ -73,6 +73,7 @@ int main() {
 }
 ```
 ## OUTPUT:
+![Screenshot 2024-10-13 124831](https://github.com/user-attachments/assets/f4e1e977-b35d-4d27-bdf2-536ea964fe02)
 
 ## RESULT:
 Thus the implementation of Diffe Hellman Algorithm executed successfully.
